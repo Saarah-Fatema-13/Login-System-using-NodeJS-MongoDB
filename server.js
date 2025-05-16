@@ -1,6 +1,15 @@
 require('dotenv').config();
 
+const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const path = require('path');
+const User = require('./models/User');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// ✅ Connect to MongoDB using URI from .env
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -10,30 +19,12 @@ mongoose.connect(process.env.MONGODB_URI, {
   console.log('MongoDB Connection Error:', err);
 });
 
-
-
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const path = require('path');
-const User = require('./models/User');
-
-const app = express();
-const PORT = 3000;
-
-// Connect to MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/loginDB', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log("MongoDB connected"))
-  .catch(err => console.log(err));
-
-// Middleware
+// ✅ Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'views')));
 
-// Routes
+// ✅ Routes
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
