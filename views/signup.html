@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup</title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="form-wrapper">
+    <div class="form-container">
+      <h2>Get started for free</h2>
+      <form action="/signup" method="POST">
+        <div class="name-fields">
+          <input type="text" name="firstName" placeholder="First name" required>
+          <input type="text" name="lastName" placeholder="Last name" required>
+        </div>
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <input type="password" name="password" placeholder="Enter your password" required>
+        <input type="password" name="confirmPassword" placeholder="Confirm your password" required>
+        <button type="submit" class="primary-btn">Get started</button>
+        <p class="link-text">Do you have an account? <a href="/">Login</a></p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
